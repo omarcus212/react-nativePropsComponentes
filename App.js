@@ -1,12 +1,12 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 import Login from "./src/views/login";
 import Home from "./src/views/home";
 import Cadastro from "./src/views/cadastro";
 
 const App = () => {
-  const name = 'Senai';
+  //const name = 'Senai';
 
 
   return (

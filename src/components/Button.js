@@ -3,12 +3,12 @@ import { TouchableOpacity, StyleSheet, Text } from "react-native";
 import COLORS from "../const/colors";
 
 // props
-const Button = ({texto}) => {
+const Button = ({texto,onPress = () => {}}) => {
 
     return (
 
         <TouchableOpacity style={estilos.button}
-          activeOpacity={0.5}>
+          activeOpacity={0.5} onPress={onPress}>
             <Text style={estilos.title}>{texto}</Text>
         </TouchableOpacity>
 
