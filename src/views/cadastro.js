@@ -17,6 +17,8 @@ const Cadastro = () => {
     capa: '',
   });
 
+
+
   //FUNÇÃO QUE MANIPULA A ENTRADA DE DADOS NA STATE NO METÓDO onChangeText
   const handlerOnChange = (text, input) => {
 
@@ -38,28 +40,40 @@ const Cadastro = () => {
 
 
   /*********  validação dos dados de cadastro *********/
+  //state de validacao
+  //cada REACT.useState devera ter um handler
+  const [erros , setErros] = React.useState({});
+  
+  // função handler que configura as mensagens de erro na states
+
+  const handlerErros = (errosMensange, input) =>{
+       setErros((prevState)=>(
+            {...prevState, [input]:errosMensange}
+       ));
+  }
 
   const validate = () => {
 
     let validate = true;
 
     if (!inputs.titulo) {
+      handlerErros("informe o titulo do livro ", 'titulo')
       validate = false;
-      console.log("TITULO EM BRANCO");
+      // console.log("TITULO EM BRANCO");
 
+    }else{
+      
     }
 
+
     if (!inputs.descricao) {
+      handlerErros("informe o descrição do livro ", 'descricao')
       validate = false;
-      console.log("COMO ASSIM VC NÃO SABE A DESCRIÇÃO");
-
-
-
+      // console.log("DESCRIÇÀO EM BRANCO");
     }
 
     if (!inputs.capa) {
-      validate = false;
-      console.log("ISSO AI COLOCA UMA CAPA MSM NÃO");
+      handlerErros("informe o capa do livro ", 'capa')
 
     }
 
@@ -81,14 +95,20 @@ const Cadastro = () => {
 
           <Input
             label="TITULO"
+            erro={erros.titulo}
+            onFocus={()=>{handlerErros(null, 'titulo')}}
             onChangeText={(text) => handlerOnChange(text, 'titulo')} />
 
           <Input
             label="DESCRIÇÃO"
+            onFocus={()=>{handlerErros(null, 'descricao')}}
+            erro={erros.descricao}
             onChangeText={(text) => handlerOnChange(text, 'descricao')} />
 
           <Input
             label="CAPA"
+            onFocus={()=>{handlerErros(null, 'capa')}}
+            erro={erros.capa}
             onChangeText={(text) => handlerOnChange(text, 'capa')} />
 
           <Button
