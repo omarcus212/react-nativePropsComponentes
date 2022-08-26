@@ -96,17 +96,20 @@ const Cadastro = () => {
           <Input
             label="TITULO"
             erro={erros.titulo}
+            iconName="book-outline"
             onFocus={()=>{handlerErros(null, 'titulo')}}
             onChangeText={(text) => handlerOnChange(text, 'titulo')} />
 
           <Input
             label="DESCRIÇÃO"
+            iconName="card-text-outline"
             onFocus={()=>{handlerErros(null, 'descricao')}}
             erro={erros.descricao}
             onChangeText={(text) => handlerOnChange(text, 'descricao')} />
 
           <Input
             label="CAPA"
+            iconName="image-outline"
             onFocus={()=>{handlerErros(null, 'capa')}}
             erro={erros.capa}
             onChangeText={(text) => handlerOnChange(text, 'capa')} />
