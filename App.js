@@ -1,23 +1,19 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-
 import Login from "./src/views/login";
 import Home from "./src/views/home";
+import ListImagem from "./src/views/list";
 import Cadastro from "./src/views/cadastro";
+
 
 const App = () => {
   //const name = 'Senai';
 
 
   return (
-    // <View>
-    //   <Text style={stylea.tittle}>
-    //     {name}
-    //   </Text>
-    // </View> 
-
-    //  <Login/>
-    <Cadastro />
+ 
+    // <Cadastro />
+    <ListImagem/>
 
 
   );

@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, SafeAreaView, ScrollView, } from "react-native"
 import Input from "../components/input";
 import COLORS from "../const/colors";
 import Button from "../components/Button";
+import apibooks from "../service/apibooks";
 
 const Cadastro = () => {
   //const name = 'tela de cadastro';
@@ -42,15 +43,17 @@ const Cadastro = () => {
   /*********  validação dos dados de cadastro *********/
   //state de validacao
   //cada REACT.useState devera ter um handler
-  const [erros , setErros] = React.useState({});
-  
+  const [erros, setErros] = React.useState({});
+
   // função handler que configura as mensagens de erro na states
 
-  const handlerErros = (errosMensange, input) =>{
-       setErros((prevState)=>(
-            {...prevState, [input]:errosMensange}
-       ));
+  const handlerErros = (errosMensange, input) => {
+    setErros((prevState) => (
+      { ...prevState, [input]: errosMensange }
+    ));
   }
+
+
 
   const validate = () => {
 
@@ -61,8 +64,8 @@ const Cadastro = () => {
       validate = false;
       // console.log("TITULO EM BRANCO");
 
-    }else{
-      
+    } else {
+
     }
 
 
@@ -77,7 +80,24 @@ const Cadastro = () => {
 
     }
 
+    if (validate) {
+      registerbook();
+      console.log('sucess')
+    }
 
+  }
+
+  const registerbook = () =>{
+         
+    try{
+     
+      const response = apibooks.post("/registerbooks",{
+        titlle:inputs.titulo,
+        description:inputs.descricao,
+        image:inputs.capa,
+      });                      
+
+    }catch(erro){404}
 
   }
 
@@ -97,20 +117,20 @@ const Cadastro = () => {
             label="TITULO"
             erro={erros.titulo}
             iconName="book-outline"
-            onFocus={()=>{handlerErros(null, 'titulo')}}
+            onFocus={() => { handlerErros(null, 'titulo') }}
             onChangeText={(text) => handlerOnChange(text, 'titulo')} />
 
           <Input
             label="DESCRIÇÃO"
             iconName="card-text-outline"
-            onFocus={()=>{handlerErros(null, 'descricao')}}
+            onFocus={() => { handlerErros(null, 'descricao') }}
             erro={erros.descricao}
             onChangeText={(text) => handlerOnChange(text, 'descricao')} />
 
           <Input
             label="CAPA"
             iconName="image-outline"
-            onFocus={()=>{handlerErros(null, 'capa')}}
+            onFocus={() => { handlerErros(null, 'capa') }}
             erro={erros.capa}
             onChangeText={(text) => handlerOnChange(text, 'capa')} />
 
