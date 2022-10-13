@@ -1,42 +1,40 @@
 import React from "react";
-import { StyleSheet } from "react-native";
-import Login from "./src/views/login";
-import Home from "./src/views/home";
-import ListImagem from "./src/views/list";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ListBooks from "./src/views/list";
 import Cadastro from "./src/views/cadastro";
+import Details from "./src/views/details";
+
+const Stack = createNativeStackNavigator();
 
 
 const App = () => {
-  //const name = 'Senai';
+
 
 
   return (
- 
-    // <Cadastro />
-    <ListImagem/>
+    // <ListBooks/>
+    <Details/>
+//  <NavigationContainer>
+//   <Stack.Navigator screenOptions={false}>
+  
+//     <Stack.Screen
+//      name="Cadastro"
+//      component={Cadastro}
+//      options={{title:"CADASTRO DE LIVROS"}}
+//     />
 
+// <Stack.Screen
+//      name="ListBooks"
+//      component={Cadastro}
+//      options={{title:"ListBooks DE LIVROS"}}
+//     />
 
+//   </Stack.Navigator>
+//  </NavigationContainer>
   );
 
 }
 
-
-const stylea = StyleSheet.create({
-
-  container: {
-  },
-
-  tittle: {
-    width: "100%",
-    backgroundColor: "#F00",
-    textAlign: "center",
-    fontSize: 16,
-    lineHeight: 26,
-    color: "#FFF",
-    fontWeight: "bold",
-    padding: 10,
-  },
-
-});
 
 export default App;

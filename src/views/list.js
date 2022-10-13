@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, SafeAreaView, ScrollView, Image } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity } from "react-native";
 import COLORS from "../const/colors";
 import apibooks from "../service/apibooks";
 import frontCover from "../assets/img/lor150.png"
@@ -14,7 +14,7 @@ const listImagem = () => {
 
             apibooks.get('/listbooks').then((data) => {
 
-                console.log(data);
+                setBooks(data.data)
 
             })
 
@@ -30,10 +30,25 @@ const listImagem = () => {
 
             <View style={styleimg.container}>
 
-                <View style={styleimg.post}>
-                    <Image style={styleimg.img} source={frontCover} />
-                    <Text style={styleimg.titlle}>herry potter is the best</Text>
-                </View>
+                {
+                    books.map(
+
+                        books => (
+                            <TouchableOpacity 
+                            key={books.cod_books}
+                            style={styleimg.post}
+                            onPress={() =>{console.log('click')}}
+                            >
+                                <View>
+                                    <Image style={styleimg.img} source={frontCover} />
+                                    <Text style={styleimg.titlle}>{books.titlle}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    )
+                }
+
+
 
             </View>
 
